@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<div
+  className="App"
+>
+  <h1
+    className="title"
+  >
+    Shared Calculator
+  </h1>
+  <div
+    className="Input-Box"
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Evaluate
+    </button>
+  </div>
+  <div
+    className="Log-Box"
+  >
+    <textarea
+      cols="50"
+      name="logs"
+      rows="10"
+      value=""
+    />
+  </div>
+</div>
+`;
