@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from "react";
-import * as mathjs from "mathjs";
+import { v4 as uuidv4 } from 'uuid';
 
 class App extends Component {
     constructor(props) {
@@ -13,6 +13,16 @@ class App extends Component {
         this.onTextChange = this.onTextChange.bind(this);
     }
 
+    componentDidMount() {
+        let browserName = "Browser"+uuidv4();
+        this.connection = new WebSocket("ws://calculator-app-backend.herokuapp.com/evaluate?name="+browserName);
+        this.connection.onmessage = event => {
+            this.setState({
+                logs: event.data
+            })
+        }
+    }
+
     onTextChange(e) {
         this.setState({
             expression: e.target.value
@@ -20,9 +30,7 @@ class App extends Component {
     }
 
     onEvaluate() {
-        this.setState({
-            logs: this.state.logs + "\n" + this.state.expression + " = " + mathjs.evaluate(this.state.expression)
-        })
+        this.connection.send(this.state.expression)
     }
 
     render() {
