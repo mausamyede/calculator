@@ -11,4 +11,19 @@ describe('App', () => {
 
         expect(component).toMatchSnapshot();
     });
+
+    it('onTextChange should update expression in state', () => {
+        const component = shallow(<App/>);
+
+        component.setState({
+            expression: '',
+            logs: ''
+        })
+
+        component.instance().onTextChange({target: {value: "some"}})
+        expect(component.state()).toEqual({
+            expression: 'some',
+            logs: ''
+        })
+    });
 });
