@@ -15,7 +15,7 @@ class App extends Component {
 
     componentDidMount() {
         let browserName = "Browser"+uuidv4();
-        this.connection = new WebSocket("ws://calculator-app-backend.herokuapp.com/evaluate?name="+browserName);
+        this.connection = new WebSocket("wss://calculator-app-backend.herokuapp.com/evaluate?name="+browserName);
         this.connection.onmessage = event => {
             this.setState({
                 logs: event.data
